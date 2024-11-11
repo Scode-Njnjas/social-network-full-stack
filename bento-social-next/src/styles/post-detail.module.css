@@ -1,0 +1,8 @@
+.viewFull {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+  gap: 12px;
+  min-height: calc(100vh - 68px);
+}

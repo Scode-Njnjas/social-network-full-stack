@@ -1,0 +1,27 @@
+[
+  {
+    "id": "0192db9e-9dc0-7228-9af1-7b74d7d5450a",
+    "content": "content thu nam",
+    "image": "https://plus.unsplash.com/premium_photo-1670513726119-4cc42ba16d40?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "isFeatured": false,
+    "commentCount": 0,
+    "likedCount": 0,
+    "type": "media",
+    "createdAt": "2024-10-30T04:10:58.000Z",
+    "updatedAt": "2024-10-30T04:10:58.000Z",
+    "topic": {
+      "id": "91e00345-066c-4ab0-b6d2-7f9a4b727696",
+      "name": "topic mock",
+      "postCount": 4,
+      "createdAt": "2024-10-30T04:11:15.164Z",
+      "updatedAt": "2024-10-30T04:11:15.164Z"
+    },
+    "author": {
+      "id": "0192d0f1-e761-744e-ba05-f42d04d99702",
+      "username": "viettranx",
+      "firstName": "Viet",
+      "lastName": "Tran",
+      "avatar": null
+    }
+  }
+]

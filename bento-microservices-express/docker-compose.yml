@@ -1,0 +1,78 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app-dev
+    volumes:
+      - .:/app
+      - app_node_modules:/app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=mysql://root:200lab_secret@mysql:3306/social_network?connection_limit=100
+      - REDIS_URL=redis://:200lab_redis@redis:6379
+    networks:
+      - social
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-bento
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=200lab_secret
+      - MYSQL_DATABASE=social_network
+    volumes:
+      - social_mysql:/var/lib/mysql
+    networks:
+      - social
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  adminer:
+    image: adminer:latest
+    container_name: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - ADMINER_DEFAULT_SERVER=mysql
+      - ADMINER_DESIGN=dracula # You can choose different themes: pepa-linha, dracula, flat, nette, etc.
+    networks:
+      - social
+    depends_on:
+      - mysql
+
+  redis:
+    image: redis:6.0
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-bento:/data
+    environment:
+      - REDIS_PASSWORD=200lab_redis
+    networks:
+      - social
+    command: /bin/sh -c 'redis-server --appendonly yes --requirepass $$REDIS_PASSWORD'
+
+networks:
+  social:
+
+volumes:
+  social_mysql:
+  redis-bento:
+  app_node_modules:

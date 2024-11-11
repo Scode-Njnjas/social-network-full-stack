@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+.font-inter {
+  @apply font-sans;
+  font-family: 'Inter', sans-serif;
+}
+
+.font-rubik {
+  @apply font-sans;
+  font-family: 'Rubik', sans-serif;
+}
+
+.font-schibstedGrotesk {
+  @apply font-sans;
+  font-family: 'Schibsted Grotesk', sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  /* background-color: var(--surface-bg); */
+
+  /* Card shadow/Stack shadow */
+
+  /* border: 1px solid var(--stroke-15-card, rgba(255, 255, 255, 0.4)); */
+}
+
+@layer utilities {
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+}
+
+input {
+  background-color: transparent;
+}
